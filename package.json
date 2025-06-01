@@ -1,6 +1,6 @@
 {
   "name": "knowhub",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Synchronize AI coding–agent knowledge files (rules, templates, guidelines) across your project.",
   "type": "module",
   "main": "dist/index.js",
