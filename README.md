@@ -57,6 +57,32 @@ knowhub searches for your configuration in these locations (in this order):
 
 If multiple files exist, the one with highest precedence is loaded. If no configuration is found, knowhub exits with an error.
 
+### Environment Variables
+
+**Important**: Environment variable expansion (e.g., `${API_TOKEN}`) is **not supported** in JSON or YAML configuration files. 
+
+- **For `.knowhubrc.json` and `.knowhubrc.yaml`**: Use literal values or placeholders like `"YOUR_API_TOKEN_HERE"`
+- **For `.knowhubrc.ts` and `.knowhubrc.js`**: Use `process.env.API_TOKEN` to access environment variables
+
+Example comparison:
+
+```yaml
+# ❌ This does NOT work in YAML/JSON files
+headers:
+  Authorization: "Bearer ${API_TOKEN}"
+
+# ✅ Use literal values in YAML/JSON files
+headers:
+  Authorization: "Bearer YOUR_API_TOKEN_HERE"
+```
+
+```typescript
+// ✅ This works in TypeScript/JavaScript files
+headers: {
+  Authorization: `Bearer ${process.env.API_TOKEN}`,
+}
+```
+
 ### `Resource` Schema
 
 Each entry in the `resources` array must conform to this schema:
@@ -125,7 +151,7 @@ Example:
   pluginConfig:
     url: "https://example.com/api-spec.json"
     headers:
-      Authorization: "Bearer ${API_TOKEN}"
+      Authorization: "Bearer YOUR_API_TOKEN_HERE"
       Accept: "application/json"
     timeout: 10000
   overwrite: true
@@ -180,7 +206,7 @@ resources:
     pluginConfig:
       url: 'https://example.com/api-spec.json'
       headers:
-        Authorization: "Bearer ${API_TOKEN}"
+        Authorization: "Bearer YOUR_API_TOKEN_HERE"
         Accept: "application/json"
       timeout: 10000
     overwrite: true
@@ -384,7 +410,7 @@ resources:
     pluginConfig:
       url: 'https://api.internal.com/config.json'
       headers:
-        Authorization: "Bearer ${API_TOKEN}"
+        Authorization: "Bearer YOUR_API_TOKEN_HERE"
         X-Team: "frontend"
         Accept: "application/json"
       timeout: 15000
