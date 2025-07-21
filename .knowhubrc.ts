@@ -29,10 +29,10 @@ const config: Config = {
     {
       plugin: "http",
       pluginConfig: {
-        url: "https://raw.githubusercontent.com/grapeot/devin.cursorrules/master/.windsurfrules",
+        url: "https://raw.githubusercontent.com/kinopeee/windsurfrules/refs/heads/main/v5-en/.windsurfrules",
       },
       overwrite: true,
-      outputs: ".windsurfrules",
+      outputs: ".windsurf/rules/rules.md",
     },
   ],
 };
