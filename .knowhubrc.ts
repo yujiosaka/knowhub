@@ -34,6 +34,14 @@ const config: Config = {
       overwrite: true,
       outputs: ".windsurf/rules/rules.md",
     },
+    {
+      plugin: "http",
+      pluginConfig: {
+        url: "https://gist.githubusercontent.com/yujiosaka/3c35711cc4198136c637bdb8b2806755/raw/15ea776c76f2962f67ecf6dd8df3f7e63705b792/CLAUDE.md",
+      },
+      overwrite: true,
+      outputs: "CLAUDE.md",
+    },
   ],
 };
 
